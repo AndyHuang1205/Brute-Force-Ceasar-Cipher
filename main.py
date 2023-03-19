@@ -1,3 +1,9 @@
+"""
+Andy Huang
+3/19/2023
+Brute Force Ceasar Cipher in Python
+"""
+
 alphabet = 'abcdefghijklmnopqrstuvwxyz'
 ALPHABET = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
 
@@ -5,9 +11,9 @@ message = 'Come over here Watson'
 key = 3
 
 
-def encrypt(n, text):
+def encrypt(n, plaintext):
     result = ''
-    for l in text:
+    for l in plaintext:
         try:
             if l.isupper():
                 index = ALPHABET.index(l)
@@ -22,9 +28,12 @@ def encrypt(n, text):
     return result
 
 
-def bruteForce(message):
+cipherText = encrypt(key, message)
+
+
+def bruteForce(ciphertext):
     result = [''] * 26
-    for l in message:
+    for l in ciphertext:
         try:
             if l.isupper():
                 index = ALPHABET.index(l)
@@ -42,5 +51,5 @@ def bruteForce(message):
     return result
 
 
-for i, j in enumerate(bruteForce(encrypt(key, message))):
-    print("{:2d}: {}".format(i,j))
+for i, j in enumerate(bruteForce(cipherText)):
+    print("{:2d}: {}".format(i, j))
